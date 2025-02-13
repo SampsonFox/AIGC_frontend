@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="set auto deploy">
-      <change afterPath="$PROJECT_DIR$/start_frontend.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start_frontend.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start_frontend.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +63,7 @@
       <workItem from="1739368050133" duration="2457000" />
       <workItem from="1739443813213" duration="60000" />
       <workItem from="1739443882573" duration="929000" />
-      <workItem from="1739446009902" duration="2443000" />
+      <workItem from="1739446009902" duration="3069000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -112,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739447994137</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="set auto deploy">
+      <option name="closed" value="true" />
+      <created>1739448536590</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1739448536590</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
