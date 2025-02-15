@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="set auto deploy">
+    <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="set demo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/antdx-aigc/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/antdx-aigc/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_frontend.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start_frontend.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,14 +34,16 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "S:/selfWork/20250211_AIGC/AIGC_frontend",
+    "last_opened_file_path": "S:/selfWork/20250214_参考代码",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "com.intellij.pycharm.community.ide.impl.configuration.PythonContentEntriesConfigurable",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PyCharm 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "S:\\selfWork\\20250211_AIGC\\AIGC_frontend\\antdx-aigc\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -64,7 +66,10 @@
       <workItem from="1739368050133" duration="2457000" />
       <workItem from="1739443813213" duration="60000" />
       <workItem from="1739443882573" duration="929000" />
-      <workItem from="1739446009902" duration="5192000" />
+      <workItem from="1739446009902" duration="6415000" />
+      <workItem from="1739528453890" duration="4293000" />
+      <workItem from="1739592750311" duration="212000" />
+      <workItem from="1739592978960" duration="11291000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -146,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739449747774</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="set demo">
+      <option name="closed" value="true" />
+      <created>1739451733328</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1739451733328</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +193,7 @@
     <MESSAGE value="change to server" />
     <MESSAGE value="start server" />
     <MESSAGE value="set auto deploy" />
-    <option name="LAST_COMMIT_MESSAGE" value="set auto deploy" />
+    <MESSAGE value="set demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="set demo" />
   </component>
 </project>

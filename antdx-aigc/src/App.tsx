@@ -7,6 +7,7 @@ import {
   Welcome,
   useXAgent,
   useXChat,
+  XStream
 } from '@ant-design/x';
 import { createStyles } from 'antd-style';
 import React, { useEffect } from 'react';
@@ -24,6 +25,7 @@ import {
   SmileOutlined,
 } from '@ant-design/icons';
 import { Badge, Button, type GetProp, Space } from 'antd';
+import axios from 'axios';
 
 const renderTitle = (icon: React.ReactElement, title: string) => (
   <Space align="start">
@@ -209,14 +211,126 @@ const Independent: React.FC = () => {
 
   // ==================== Runtime ====================
   const [agent] = useXAgent({
-    request: async ({ message }, { onSuccess }) => {
-      onSuccess(`Mock success return. You said: ${message}`);
+    request: async (info, callbacks) => {
+      const { messages, message } = info;
+      const { onSuccess, onUpdate, onError } = callbacks;
+
+      // console.log('message', message);
+      // console.log('messages', messages);
+
+      let content = '';
+
+      try {
+        const response = await fetch('http://localhost:2564/django/aigc/stream/', {
+          method: 'POST', // 使用 POST 方法发送数据
+          headers: {
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'Accept-Encoding': 'gzip, deflate, br, zstd',
+            'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
+            'Cache-Control': 'max-age=0',
+            'Connection': 'keep-alive',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            'Upgrade-Insecure-Requests': '1',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
+            'sec-ch-ua': '"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+          },
+          body: JSON.stringify({ message }), // 将消息内容作为 JSON 发送
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        if (!response.body) {
+          throw new Error('Response body is null');
+        }
+
+
+        const reader = response?.body.getReader();
+        const decoder = new TextDecoder('utf-8');
+
+        // for await (const data of XStream({
+        //   readableStream: response.body,
+        // })) {
+        //   console.log(11415154,data);
+        //   // onUpdate(data);
+        //
+        // }
+
+        while (true) {
+          const { done, value } = await reader.read();
+          // console.log(value)
+
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split('\n\n').filter(line => line.startsWith('data: ') && line.length > 6);
+
+          // console.log('start:',chunk)
+
+          lines.forEach(line => {
+            const deltaContent = line.slice(6) || '';
+            content += deltaContent;
+            onUpdate(content);
+          });
+
+          // console.log('end:',chunk)
+        }
+
+        onSuccess(content);
+      } catch (error) {
+        console.error('Error:', error);
+        // onError(error);
+      }
     },
   });
+
+  // const [agent] = useXAgent({
+  //   request: async ({ message }, { onSuccess, onUpdate }) => {
+  //     const fullContent = `Streaming output instead of Bubble typing effect. You typed: ${message}`;
+  //     let currentContent = '';
+  //     onUpdate(currentContent);
+  //
+  //     const id = setInterval(() => {
+  //       currentContent = fullContent.slice(0, currentContent.length + 2);
+  //       onUpdate(currentContent);
+  //
+  //       if (currentContent === fullContent) {
+  //         clearInterval(id);
+  //         onSuccess(fullContent);
+  //       }
+  //     }, 100);
+  //   },
+  // });
+
 
   const { onRequest, messages, setMessages } = useXChat({
     agent,
   });
+
+  //   const { onRequest,   const [agent] = useXAgent({
+  //   request: async ({ message }, { onSuccess, onUpdate }) => {
+  //     const fullContent = `Streaming output instead of Bubble typing effect. You typed: ${message}`;
+  //     let currentContent = '';
+  //
+  //     const id = setInterval(() => {
+  //       currentContent = fullContent.slice(0, currentContent.length + 2);
+  //       onUpdate(currentContent);
+  //
+  //       if (currentContent === fullContent) {
+  //         clearInterval(id);
+  //         onSuccess(fullContent);
+  //       }
+  //     }, 100);
+  //   },
+  // }); } = useXChat({
+  //   agent,
+  // });
 
   useEffect(() => {
     if (activeKey !== undefined) {
@@ -286,7 +400,7 @@ const Independent: React.FC = () => {
 
   const items: GetProp<typeof Bubble.List, 'items'> = messages.map(({ id, message, status }) => ({
     key: id,
-    loading: status === 'loading',
+    loading: message.length==0,
     role: status === 'local' ? 'local' : 'ai',
     content: message,
   }));

@@ -2,6 +2,7 @@
   "name": "antdx-aigc",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://dashscope.aliyuncs.com",
   "dependencies": {
     "@ant-design/x": "^1.0.5",
     "@testing-library/jest-dom": "^5.14.1",
@@ -12,6 +13,8 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "antd": "^5.24.0",
+    "antd-style": "^3.7.1",
+    "axios": "^1.7.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
