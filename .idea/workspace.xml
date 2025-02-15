@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="set demo">
+    <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="前后端联调测试">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/antdx-aigc/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/antdx-aigc/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +68,7 @@
       <workItem from="1739446009902" duration="6415000" />
       <workItem from="1739528453890" duration="4293000" />
       <workItem from="1739592750311" duration="212000" />
-      <workItem from="1739592978960" duration="11291000" />
+      <workItem from="1739592978960" duration="12344000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -159,7 +158,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739451733328</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="前后端联调测试">
+      <option name="closed" value="true" />
+      <created>1739608211639</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1739608211639</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,6 +201,7 @@
     <MESSAGE value="start server" />
     <MESSAGE value="set auto deploy" />
     <MESSAGE value="set demo" />
-    <option name="LAST_COMMIT_MESSAGE" value="set demo" />
+    <MESSAGE value="前后端联调测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="前后端联调测试" />
   </component>
 </project>

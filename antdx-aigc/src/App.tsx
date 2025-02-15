@@ -221,7 +221,7 @@ const Independent: React.FC = () => {
       let content = '';
 
       try {
-        const response = await fetch('http://localhost:2564/django/aigc/stream/', {
+        const response = await fetch('/django/aigc/stream/', {
           method: 'POST', // 使用 POST 方法发送数据
           headers: {
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
