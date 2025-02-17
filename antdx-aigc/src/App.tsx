@@ -9,6 +9,7 @@ import {
   useXChat,
   XStream
 } from '@ant-design/x';
+import type { BubbleProps } from '@ant-design/x';
 import { createStyles } from 'antd-style';
 import React, { useEffect } from 'react';
 
@@ -24,8 +25,9 @@ import {
   ShareAltOutlined,
   SmileOutlined,
 } from '@ant-design/icons';
-import { Badge, Button, type GetProp, Space } from 'antd';
+import { Badge, Button, type GetProp, Space,Typography  } from 'antd';
 import axios from 'axios';
+// import markdownit from 'markdown-it';
 
 const renderTitle = (icon: React.ReactElement, title: string) => (
   <Space align="start">
@@ -450,7 +452,14 @@ const Independent: React.FC = () => {
     </div>
   );
 
-  // ==================== Render =================
+  // const md = markdownit({ html: true, breaks: true });
+  // const renderMarkdown: BubbleProps['messageRender'] = (content) => (
+  //   <Typography>
+  //     {/* biome-ignore lint/security/noDangerouslySetInnerHtml: used in demo */}
+  //     <div dangerouslySetInnerHTML={{ __html: md.render(content) }} />
+  //   </Typography>
+  // );
+    // ==================== Render =================
   return (
     <div className={styles.layout}>
       <div className={styles.menu}>
