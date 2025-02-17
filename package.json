@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@ant-design/pro-cli": "^3.2.1",
+    "@ant-design/pro-components": "^2.8.6"
+  }
+}

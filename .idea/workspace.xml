@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="save">
+      <change afterPath="$PROJECT_DIR$/nova_aigc/src/pages/chatbox/ChatBox.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/antdx-aigc/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/antdx-aigc/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/reportWebVitals.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/setupTests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/antdx-aigc/tsconfig.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/start_frontend.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start_frontend.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,10 +32,22 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="bare_chatbox" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,22 +61,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "S:/selfWork/20250214_参考代码",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "http.proxy",
-    "ts.external.directory.path": "S:\\selfWork\\20250211_AIGC\\AIGC_frontend\\antdx-aigc\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;S:/selfWork/20250214_参考代码&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;S:\\selfWork\\20250211_AIGC\\AIGC_frontend\\antdx-aigc\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="S:\selfWork\20250211_AIGC\AIGC_frontend\nova_aigc\src\pages" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
