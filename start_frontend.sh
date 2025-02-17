@@ -3,6 +3,7 @@
 {
 	echo "Lunching aigc frontend"
 	cd /frontend/codes/AIGC_frontend/AIGC_frontend/antdx-aigc/
+	yarn install
 	npm run start
 }
 wait

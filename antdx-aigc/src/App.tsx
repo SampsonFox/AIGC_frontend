@@ -27,7 +27,7 @@ import {
 } from '@ant-design/icons';
 import { Badge, Button, type GetProp, Space,Typography  } from 'antd';
 import axios from 'axios';
-// import markdownit from 'markdown-it';
+import markdownit from 'markdown-it';
 
 const renderTitle = (icon: React.ReactElement, title: string) => (
   <Space align="start">
@@ -193,6 +193,15 @@ const roles: GetProp<typeof Bubble.List, 'roles'> = {
     variant: 'shadow',
   },
 };
+
+
+const md = markdownit({ html: true, breaks: true });
+const renderMarkdown: BubbleProps['messageRender'] = (content) => (
+  <Typography>
+    {/* biome-ignore lint/security/noDangerouslySetInnerHtml: used in demo */}
+    <div dangerouslySetInnerHTML={{ __html: md.render(content) }} />
+  </Typography>
+);
 
 const Independent: React.FC = () => {
   // ==================== Style ====================
@@ -405,6 +414,7 @@ const Independent: React.FC = () => {
     loading: message.length==0,
     role: status === 'local' ? 'local' : 'ai',
     content: message,
+    messageRender: renderMarkdown
   }));
 
   const attachmentsNode = (
@@ -452,13 +462,6 @@ const Independent: React.FC = () => {
     </div>
   );
 
-  // const md = markdownit({ html: true, breaks: true });
-  // const renderMarkdown: BubbleProps['messageRender'] = (content) => (
-  //   <Typography>
-  //     {/* biome-ignore lint/security/noDangerouslySetInnerHtml: used in demo */}
-  //     <div dangerouslySetInnerHTML={{ __html: md.render(content) }} />
-  //   </Typography>
-  // );
     // ==================== Render =================
   return (
     <div className={styles.layout}>
@@ -488,6 +491,7 @@ const Independent: React.FC = () => {
           items={items.length > 0 ? items : [{ content: placeholderNode, variant: 'borderless' }]}
           roles={roles}
           className={styles.messages}
+
         />
         {/* 🌟 提示词 */}
         <Prompts items={senderPromptsItems} onItemClick={onPromptsItemClick} />
