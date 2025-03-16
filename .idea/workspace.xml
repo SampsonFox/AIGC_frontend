@@ -4,28 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="save">
-      <change afterPath="$PROJECT_DIR$/nova_aigc/src/pages/chatbox/ChatBox.tsx" afterDir="false" />
+    <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/reportWebVitals.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/src/setupTests.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/antdx-aigc/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/start_frontend.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start_frontend.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova_aigc/config/defaultSettings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/config/defaultSettings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova_aigc/src/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/app.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova_aigc/src/pages/User/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/pages/User/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova_aigc/src/pages/chatbox/ChatBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/pages/chatbox/ChatBox.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova_aigc/src/services/ant-design-pro/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/services/ant-design-pro/api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nova_aigc/src/services/ant-design-pro/typings.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/services/ant-design-pro/typings.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +50,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;S:/selfWork/20250214_参考代码&quot;,
+    &quot;last_opened_file_path&quot;: &quot;S:/selfWork/20250211_AIGC/AIGC_lobe&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -73,7 +59,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;S:\\selfWork\\20250211_AIGC\\AIGC_frontend\\antdx-aigc\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;S:\\selfWork\\20250211_AIGC\\AIGC_frontend\\nova_aigc\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -107,6 +93,15 @@
       <workItem from="1739592978960" duration="13278000" />
       <workItem from="1739786149259" duration="1655000" />
       <workItem from="1739787832511" duration="2218000" />
+      <workItem from="1740390514383" duration="1361000" />
+      <workItem from="1741082045691" duration="1667000" />
+      <workItem from="1741516859352" duration="51000" />
+      <workItem from="1741604916826" duration="6498000" />
+      <workItem from="1741693754568" duration="3293000" />
+      <workItem from="1741779251026" duration="636000" />
+      <workItem from="1741865565571" duration="4534000" />
+      <workItem from="1742012721902" duration="13872000" />
+      <workItem from="1742102207059" duration="3198000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -220,7 +215,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739787694336</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="套一层antdesign X">
+      <option name="closed" value="true" />
+      <created>1739797810619</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739797810619</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update">
+      <option name="closed" value="true" />
+      <created>1739799025051</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1739799025051</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,6 +268,20 @@
     <MESSAGE value="set demo" />
     <MESSAGE value="前后端联调测试" />
     <MESSAGE value="save" />
-    <option name="LAST_COMMIT_MESSAGE" value="save" />
+    <MESSAGE value="套一层antdesign X" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/nova_aigc/src/pages/chatbox/ChatBox.tsx</url>
+          <line>354</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

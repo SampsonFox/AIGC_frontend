@@ -6,7 +6,7 @@ import { request } from '@umijs/max';
 export async function currentUser(options?: { [key: string]: any }) {
   return request<{
     data: API.CurrentUser;
-  }>('/api/currentUser', {
+  }>('/django/aigc/get-userinfo/', {
     method: 'GET',
     ...(options || {}),
   });
@@ -21,15 +21,32 @@ export async function outLogin(options?: { [key: string]: any }) {
 }
 
 /** 登录接口 POST /api/login/account */
+// export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
+//   return request<API.LoginResult>('/api/login/account', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     data: body,
+//     ...(options || {}),
+//   });
+// }
+
 export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('/api/login/account', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: body,
-    ...(options || {}),
-  });
+  var req = request<API.LoginResult>(
+    '/django/aigc/api-token-auth/',
+    // '/api/login/account',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: body,
+      skipErrorHandler: true, // Skip the error handler for this request
+      ...(options || {}),
+    });
+  // return request<API.LoginResult>('/backend/api/token/', {
+  return req
 }
 
 /** 此处后端没有提供注释 GET /api/notices */
@@ -95,20 +112,37 @@ export async function removeRule(options?: { [key: string]: any }) {
 
 /** chatbox */
 
-type StreamRequestOptions = {
-  message: string;
-  [key: string]: any; // 允许额外的选项
-};
-
-type StreamResponse = Record<string, any>; // 根据实际情况定义返回类型
-
 // 封装请求函数
-export async function streamRequest(options?: StreamRequestOptions) {
-  console.log(options)
+export async function streamRequest(message,activeKey) {
+    const token = localStorage.getItem('access_token')
+    const headers = {
+    'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+  };
 
-  return fetch('/django/aigc/stream/', {
+  return fetch(`/django/aigc/stream/${activeKey}/`, {
           method: 'POST', // 使用 POST 方法发送数据
-          body: JSON.stringify(options?.message ? { message: options.message } : {} ), // 将消息内容作为 JSON 发送
+          headers: headers,
+          body: JSON.stringify(message ? { message: message } : {} ), // 将消息内容作为 JSON 发送
         });
 }
 
+/** 新建 conversation /api/rule */
+export async function newConversation_post() {
+  return request<API.NewConversationType>('/django/aigc/conversation/new/', {
+    method: 'POST',
+    data:{
+      method: 'post',
+    }
+  });
+}
+
+/** 新建 conversation /api/rule */
+export function pullSentences(con_uuid?:number) {
+  return request<API.conversation_list_Type>('/django/aigc/conversation/sentences/query/', {
+    method: 'POST',
+    data:{
+      con_uuid: con_uuid?con_uuid:null,
+    }
+  });
+}

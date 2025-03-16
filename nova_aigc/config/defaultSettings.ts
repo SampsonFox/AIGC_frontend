@@ -10,7 +10,7 @@ const Settings: ProLayoutProps & {
   navTheme: 'realDark',
   // 拂晓蓝
   colorPrimary: '#722ED1',
-  layout: 'top',
+  layout: 'side',
   contentWidth: 'Fluid',
   fixedHeader: true,
   fixSiderbar: true,
@@ -43,6 +43,19 @@ const Settings: ProLayoutProps & {
 //     //https://procomponents.ant.design/components/layout#%E9%80%9A%E8%BF%87-token-%E4%BF%AE%E6%94%B9%E6%A0%B7%E5%BC%8F
 //   },
 // };
+
+// {
+//   "navTheme": "realDark",
+//   "colorPrimary": "#722ED1",
+//   "layout": "side",
+//   "contentWidth": "Fluid",
+//   "fixedHeader": true,
+//   "fixSiderbar": true,
+//   "pwa": true,
+//   "logo": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+//   "token": {},
+//   "splitMenus": false
+// }
 
 
 

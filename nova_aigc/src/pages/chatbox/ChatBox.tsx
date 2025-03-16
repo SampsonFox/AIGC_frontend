@@ -28,7 +28,8 @@ import {
 import { Badge, Button, type GetProp, Space,Typography  } from 'antd';
 import axios from 'axios';
 import markdownit from 'markdown-it';
-import { streamRequest } from '@/services/ant-design-pro/api';
+import {newConversation_post, streamRequest,pullSentences} from '@/services/ant-design-pro/api';
+import {promise} from "@umijs/utils/compiled/zod";
 
 
 const renderTitle = (icon: React.ReactElement, title: string) => (
@@ -38,18 +39,26 @@ const renderTitle = (icon: React.ReactElement, title: string) => (
   </Space>
 );
 
-const defaultConversationsItems = [
-  {
-    key: '0',
-    label: 'What is Ant Design X?',
-  },
-];
+// const defaultConversationsItems = [
+//   {
+//     key: '0',
+//     label: 'What is Ant Design X?',
+//   },
+//       {
+//     key: '01',
+//     label: 'asdwdasdw?',
+//   },
+// ];
+
+const defaultConversationsItems = await pullSentences()
+
+console.log('defaultConversationsItems',defaultConversationsItems)
 
 const useStyle = createStyles(({ token, css }) => {
   return {
     layout: css`
       width: 100%;
-      min-width: 1000px;
+      min-width: 100%;
       height: 722px;
       border-radius: ${token.borderRadius}px;
       display: flex;
@@ -64,7 +73,8 @@ const useStyle = createStyles(({ token, css }) => {
       background: ${token.colorBgLayout}80;
       width: 280px;
       height: 100%;
-      display: flex;
+      min-width: 0%;
+      display: flow;
       flex-direction: column;
     `,
     conversations: css`
@@ -75,7 +85,7 @@ const useStyle = createStyles(({ token, css }) => {
     chat: css`
       height: 100%;
       width: 100%;
-      max-width: 700px;
+      //max-width: 700px;
       margin: 0 auto;
       box-sizing: border-box;
       display: flex;
@@ -88,6 +98,7 @@ const useStyle = createStyles(({ token, css }) => {
     `,
     placeholder: css`
       padding-top: 32px;
+      display: flex;
     `,
     sender: css`
       box-shadow: ${token.boxShadow};
@@ -183,7 +194,7 @@ const senderPromptsItems: GetProp<typeof Prompts, 'items'> = [
 const roles: GetProp<typeof Bubble.List, 'roles'> = {
   ai: {
     placement: 'start',
-    typing: { step: 5, interval: 20 },
+    // typing: { step: 5, interval: 20 },
     styles: {
       content: {
         borderRadius: 16,
@@ -211,12 +222,14 @@ const Independent: React.FC = () => {
 
   // ==================== State ====================
   const [headerOpen, setHeaderOpen] = React.useState(false);
+  
+  const [onloading, setOnloading] = React.useState(true);
 
   const [content, setContent] = React.useState('');
 
-  const [conversationsItems, setConversationsItems] = React.useState(defaultConversationsItems);
+  const [conversationsItems, setConversationsItems] = React.useState(defaultConversationsItems.data);
 
-  const [activeKey, setActiveKey] = React.useState(defaultConversationsItems[0].key);
+  const [activeKey, setActiveKey] = React.useState("new"?defaultConversationsItems.data.length===0:defaultConversationsItems[0].key);
 
   const [attachedFiles, setAttachedFiles] = React.useState<GetProp<typeof Attachments, 'items'>>(
     [],
@@ -224,38 +237,29 @@ const Independent: React.FC = () => {
 
   // ==================== Runtime ====================
   const [agent] = useXAgent({
-    request: async (info, callbacks) => {
+    request: async (
+        info,
+        callbacks
+    ) => {
       const { messages, message } = info;
       const { onSuccess, onUpdate, onError } = callbacks;
+
 
       // console.log('message', message);
       // console.log('messages', messages);
 
+      // 使用 split() 方法按 "#-#" 分割字符串
+      const parts = message.toString().split("#-#");
+
+      // 提取 activeKey 和 nextContent
+      const activeKey = parts[0];
+      const content_msg = parts[1];
+
+
       let content = '';
 
       try {
-        // const response = await fetch('/django/aigc/stream/', {
-        //   method: 'POST', // 使用 POST 方法发送数据
-        //   headers: {
-        //     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-        //     'Accept-Encoding': 'gzip, deflate, br, zstd',
-        //     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8',
-        //     'Cache-Control': 'max-age=0',
-        //     'Connection': 'keep-alive',
-        //     'Sec-Fetch-Dest': 'document',
-        //     'Sec-Fetch-Mode': 'navigate',
-        //     'Sec-Fetch-Site': 'none',
-        //     'Sec-Fetch-User': '?1',
-        //     'Upgrade-Insecure-Requests': '1',
-        //     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
-        //     'sec-ch-ua': '"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
-        //     'sec-ch-ua-mobile': '?0',
-        //     'sec-ch-ua-platform': '"Windows"',
-        //   },
-        //   body: JSON.stringify({ message }), // 将消息内容作为 JSON 发送
-        // });
-
-        const response = await streamRequest({ message: message });
+        const response = await streamRequest(content_msg,activeKey);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -304,6 +308,8 @@ const Independent: React.FC = () => {
     },
   });
 
+
+
   // const [agent] = useXAgent({
   //   request: async ({ message }, { onSuccess, onUpdate }) => {
   //     const fullContent = `Streaming output instead of Bubble typing effect. You typed: ${message}`;
@@ -326,25 +332,7 @@ const Independent: React.FC = () => {
   const { onRequest, messages, setMessages } = useXChat({
     agent,
   });
-
-  //   const { onRequest,   const [agent] = useXAgent({
-  //   request: async ({ message }, { onSuccess, onUpdate }) => {
-  //     const fullContent = `Streaming output instead of Bubble typing effect. You typed: ${message}`;
-  //     let currentContent = '';
-  //
-  //     const id = setInterval(() => {
-  //       currentContent = fullContent.slice(0, currentContent.length + 2);
-  //       onUpdate(currentContent);
-  //
-  //       if (currentContent === fullContent) {
-  //         clearInterval(id);
-  //         onSuccess(fullContent);
-  //       }
-  //     }, 100);
-  //   },
-  // }); } = useXChat({
-  //   agent,
-  // });
+  
 
   useEffect(() => {
     if (activeKey !== undefined) {
@@ -355,35 +343,51 @@ const Independent: React.FC = () => {
   // ==================== Event ====================
   const onSubmit = (nextContent: string) => {
     if (!nextContent) return;
-    onRequest(nextContent);
+    onRequest(`${activeKey}#-#${nextContent}`);
     setContent('');
   };
 
   const onPromptsItemClick: GetProp<typeof Prompts, 'onItemClick'> = (info) => {
-    onRequest(info.data.description as string);
+    // console.log('nextContent',info.data.description as string)
+    onRequest(`${activeKey}#-#${info.data.description as string}`);
   };
 
-  const onAddConversation = () => {
-    setConversationsItems([
-      ...conversationsItems,
-      {
-        key: `${conversationsItems.length}`,
-        label: `New Conversation ${conversationsItems.length}`,
-      },
-    ]);
-    setActiveKey(`${conversationsItems.length}`);
+  const onAddConversation = async () => {
+    const response = await newConversation_post();
+    const new_con_uuid:string = response.new_con_uuid.toString()
+    console.log(new_con_uuid)
+    if (!conversationsItems.some(item => item.key === new_con_uuid)){
+        setConversationsItems([
+          {
+            key: new_con_uuid,
+            label: `New Conversation ${new_con_uuid}`,
+          },
+          ...conversationsItems,
+      ]);
+    };
+
+    setActiveKey(new_con_uuid);
+    console.log(activeKey)
   };
 
-  const onConversationClick: GetProp<typeof Conversations, 'onActiveChange'> = (key) => {
+  const onConversationClick: GetProp<typeof Conversations, 'onActiveChange'> = async (key) => {
     setActiveKey(key);
+    let res = await pullSentences(Number(key))
+    setMessages(res.data[0].sentences)
   };
+
 
   const handleFileChange: GetProp<typeof Attachments, 'onChange'> = (info) =>
     setAttachedFiles(info.fileList);
 
+  if (conversationsItems.length===0) {
+    // 如果对话列表是空的 就自动创建一个新的对话
+    onAddConversation()
+  }
+
   // ==================== Nodes ====================
   const placeholderNode = (
-    <Space direction="vertical" size={16} className={styles.placeholder}>
+    <Space direction="vertical" size="middle" className={styles.placeholder}>
       <Welcome
         variant="borderless"
         icon="https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*s5sNRo5LjfQAAAAAAAAAAAAADgCCAQ/fmt.webp"
@@ -416,7 +420,7 @@ const Independent: React.FC = () => {
     key: id,
     loading: message.length==0,
     role: status === 'local' ? 'local' : 'ai',
-    content: message,
+    content: message.toString().split("#-#")[1]?message.toString().split("#-#")[1]:message,
     messageRender: renderMarkdown
   }));
 
@@ -456,12 +460,12 @@ const Independent: React.FC = () => {
 
   const logoNode = (
     <div className={styles.logo}>
-      <img
-        src="https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*eco6RrQhxbMAAAAAAAAAAAAADgCCAQ/original"
-        draggable={false}
-        alt="logo"
-      />
-      <span>Ant Design X</span>
+      {/*<img*/}
+      {/*  src="https://mdn.alipayobjects.com/huamei_iwk9zp/afts/img/A*eco6RrQhxbMAAAAAAAAAAAAADgCCAQ/original"*/}
+      {/*  draggable={false}*/}
+      {/*  alt="logo"*/}
+      {/*/>*/}
+      {/*<span>Ant Design X</span>*/}
     </div>
   );
 
@@ -494,6 +498,7 @@ const Independent: React.FC = () => {
           items={items.length > 0 ? items : [{ content: placeholderNode, variant: 'borderless' }]}
           roles={roles}
           className={styles.messages}
+
 
         />
         {/* 🌟 提示词 */}

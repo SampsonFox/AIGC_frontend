@@ -24,10 +24,13 @@ declare namespace API {
   };
 
   type LoginResult = {
+    code?: number;
+    message?: string;
     status?: string;
     type?: string;
     currentAuthority?: string;
-  };
+    data: { token: string,refreshToken:string, all_emp_list:Array<any> };
+  };;
 
   type PageParams = {
     current?: number;
@@ -62,8 +65,8 @@ declare namespace API {
   };
 
   type LoginParams = {
-    username?: string;
-    password?: string;
+    username: string;
+    password: string;
     autoLogin?: boolean;
     type?: string;
   };
@@ -97,5 +100,24 @@ declare namespace API {
     datetime?: string;
     description?: string;
     type?: NoticeIconItemType;
+  };
+  type NewConversationType = {
+    new_con_uuid: number;
+  };
+  type sentenceType = {
+    /** 单句内容 */
+    id: string;
+    message: string;
+    status: string;
+  };
+  type conversationType = {
+    /** 对话内容 */
+    key: string;
+    label: string;
+    sentences: sentenceType[];
+  };
+  type conversation_list_Type = {
+    /** 对话列表的内容总数 */
+    data: conversationType[];
   };
 }

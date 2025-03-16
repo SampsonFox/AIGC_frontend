@@ -123,6 +123,8 @@ const Login: React.FC = () => {
           id: 'pages.login.success',
           defaultMessage: '登录成功！',
         });
+        localStorage.setItem('access_token', msg.data.token); // 更新本地token储存
+        localStorage.setItem('refresh_token', msg.data.refreshToken); // 更新本地token储存
         message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         const urlParams = new URL(window.location.href).searchParams;

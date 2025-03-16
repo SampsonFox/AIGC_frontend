@@ -10,6 +10,7 @@ import { currentUser as queryCurrentUser } from '@/services/ant-design-pro/api';
 import React from 'react';
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
+import type { RequestConfig } from 'umi';
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
@@ -131,6 +132,68 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
  * 它基于 axios 和 ahooks 的 useRequest 提供了一套统一的网络请求和错误处理方案。
  * @doc https://umijs.org/docs/max/request#配置
  */
-export const request = {
+export const request: RequestConfig = {
   ...errorConfig,
+  errorConfig: {
+    errorHandler: async (error) => {
+      // console.log(error);
+      if (error.response && error.response.status === 401) {
+        // 如果是401错误，尝试刷新token
+        try {
+          // await refreshToken();
+          // 重新发送原始请求
+          const { config } = error.response;
+          const token = localStorage.getItem('access_token');
+          if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+          }
+          // 使用 fetch 重新发送请求时，确保保留原始请求的参数
+          // const data = config.data ? JSON.stringify(config.data) : null;
+          // console.log('config.body:',config.data);
+          return fetch(config.url, {
+            method: config.method,
+            headers: {
+              ...config.headers,
+              'Content-Type': 'application/json', // 确保设置了正确的 Content-Type
+            },
+            body: config.data, // 使用序列化后的请求体
+          });
+        } catch (refreshError) {
+          // 如果刷新token失败，则重定向到登录页
+          console.log('刷新token失败', refreshError);
+          message.error('您的会话已过期，请重新登录');
+          history.push('/user/login');
+        }
+      }
+      return Promise.reject(error);
+    },
+    errorThrower() {
+    }
+  },
+  requestInterceptors: [
+    (url, options) => {
+      const token = localStorage.getItem('access_token');
+      // console.log('requestInterceptors-token', token);
+      if (token) {
+        options.headers = {
+          ...options.headers,
+          Authorization: `Bearer ${token}`,
+        };
+      }
+      return { url, options };
+    },
+    // 一个二元组，第一个元素是 request 拦截器，第二个元素是错误处理
+    [(url, options) => { return { url, options } }, (error) => { return Promise.reject(error) }],
+    // 数组，省略错误处理
+    [(url, options) => { return { url, options } }]
+  ],
+  // responseInterceptors: [
+  //   (response) => {
+  //     // Handle response, e.g., refresh token if needed
+  //     return response;
+  //   },
+  //   (error) => {
+  //     return Promise.reject(error);
+  //   },
+  // ],
 };
