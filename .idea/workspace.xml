@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b7923c94-a8ce-421a-b488-62d98369f8dc" name="Changes" comment="update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova_aigc/config/defaultSettings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/config/defaultSettings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova_aigc/src/app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova_aigc/src/pages/User/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/pages/User/Login/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova_aigc/src/pages/chatbox/ChatBox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/pages/chatbox/ChatBox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova_aigc/src/services/ant-design-pro/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/services/ant-design-pro/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nova_aigc/src/services/ant-design-pro/typings.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nova_aigc/src/services/ant-design-pro/typings.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +95,7 @@
       <workItem from="1741779251026" duration="636000" />
       <workItem from="1741865565571" duration="4534000" />
       <workItem from="1742012721902" duration="13872000" />
-      <workItem from="1742102207059" duration="3198000" />
+      <workItem from="1742102207059" duration="4792000" />
     </task>
     <task id="LOCAL-00001" summary="111">
       <option name="closed" value="true" />
@@ -231,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739799025051</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="update">
+      <option name="closed" value="true" />
+      <created>1742106394915</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1742106394915</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -4,6 +4,6 @@
 	echo "Lunching aigc frontend"
 	cd /frontend/codes/AIGC_frontend/AIGC_frontend/nova_aigc/
 	yarn install
-	npm run start
+	yarn start
 }
 wait
